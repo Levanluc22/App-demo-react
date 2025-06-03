@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
@@ -19,14 +19,25 @@ class App extends React.Component{
       name: "Hồng Vy"
     })
   }
+  handleOnChange=(event)=>{
+    this.setState({
+      name: event.target.value
+    })
+  }
+  handleOnSubmit = (event) =>{
+    // Ngăn không cho load lại trang
+    event.preventDefault()
+    console.log(this.state)
+  }
   render(){
     return(
            <div>
-          <MyComponent></MyComponent>
+          
           Tôi tên là: {this.state.name} và Tôi năm nay {this.state.age}. Tôi đến từ {this.state.address}
-          <button onClick={(event)=>{this.handleClick(event)}}>Click me</button>
-          <button onMouseOver={this.handleMouseOver}>Hover me</button>
-
+           <form onSubmit={(event)=>this.handleOnSubmit(event)}>
+    <input type="text" onChange={(event)=>this.handleOnChange(event)}/>
+    <button>Submit</button>
+  </form>
     </div>
     )
   }
