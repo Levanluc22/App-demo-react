@@ -10,19 +10,21 @@ class App extends React.Component{
     age: 21,
     address: 'Quảng Nam'
   };
-  handleMouseOver(){
-    console.log("Tôi đã xuất hiệnhiện");
-
+  handleMouseOver(event){
+    console.log("Tôi đã xuất hiện");
   }
-  handleClick(){
-    console.log("Tôi nè");
+  handleClick(event){
+    console.log("Tôi tên là ",this.state.name);
+    this.setState({
+      name: "Hồng Vy"
+    })
   }
   render(){
     return(
            <div>
           <MyComponent></MyComponent>
           Tôi tên là: {this.state.name} và Tôi năm nay {this.state.age}. Tôi đến từ {this.state.address}
-          <button onClick={this.handleClick}>Click me</button>
+          <button onClick={(event)=>{this.handleClick(event)}}>Click me</button>
           <button onMouseOver={this.handleMouseOver}>Hover me</button>
 
     </div>
